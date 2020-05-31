@@ -1,8 +1,15 @@
 <template>
-  <div class="container mx-auto" v-if="data">
-    <h2>{{ data.title }}</h2>
-    <img :src="data.hdurl" />
-    {{data.explanation}}
+  <div class="bg-gray-800 h-screen">
+    <div class="container flex mx-auto p-4 flex-col lg:flex-row" v-if="data">
+      <div class="w-full lg:w-9/12 p-4">
+        <h2 class="mb-4 text-gray-300 text-2xl font-bold">{{ data.title }}</h2>
+        <img id="nasa-image" class="mx-auto object-cover" :src="data.hdurl" />
+      </div>
+      <div class="w-full lg:w-3/12 p-4 bg-gray-700 rounded">
+        <h3 class="text-2xl text-gray-300 font-bold border-b border-gray-200 mb-2">Description</h3>
+        <span class="italic text-gray-300">{{data.explanation}}</span>
+      </div>
+    </div>
   </div>
 </template>
  
@@ -22,6 +29,7 @@ export default defineComponent({
         .then(stream => stream.json())
         .then(resp => {
           data.value = resp
+          console.log(resp)
         })
     })
 
