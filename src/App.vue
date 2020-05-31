@@ -21,7 +21,7 @@ export default defineComponent({
   components: {},
 
   setup() {
-    const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`
+    const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.VUE_APP_API_KEY}`
 
     const data = ref({})
     onMounted(() => {
