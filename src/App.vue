@@ -1,13 +1,15 @@
 <template>
-  <div class="bg-gray-800 h-screen">
+  <div class="bg-gray-800 min-h-screen">
     <div class="container flex mx-auto p-4 flex-col lg:flex-row" v-if="data">
       <div class="w-full lg:w-9/12 p-4">
-        <h2 class="mb-4 text-gray-300 text-2xl font-bold">{{ data.title }}</h2>
+        <h2 class="mb-4 text-center text-gray-300 text-2xl font-bold">{{ data.title }}</h2>
         <img id="nasa-image" class="mx-auto object-cover" :src="data.hdurl" />
       </div>
-      <div class="w-full lg:w-3/12 p-4 bg-gray-700 rounded">
-        <h3 class="text-2xl text-gray-300 font-bold border-b border-gray-200 mb-2">Description</h3>
-        <span class="italic text-gray-300">{{data.explanation}}</span>
+      <div class="w-full lg:w-3/12 inline-block">
+        <div class="bg-gray-900 p-4 rounded md:mt-16">
+          <h3 class="text-2xl text-gray-300 font-bold border-b border-gray-200 mb-2">Description</h3>
+          <span class="italic text-gray-300">{{data.explanation}}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -29,7 +31,6 @@ export default defineComponent({
         .then(stream => stream.json())
         .then(resp => {
           data.value = resp
-          console.log(resp)
         })
     })
 
@@ -39,3 +40,9 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+#nasa-image {
+  max-height: 820px;
+}
+</style>
